@@ -1,6 +1,8 @@
 package library.manager.model;
 
-public class Livro {
+import library.manager.interfaces.Catalogavel;
+
+public class Livro implements Catalogavel {
     private String autor;
     private String titulo;
     private int ISBN; //numeroq ue identifica o livro
