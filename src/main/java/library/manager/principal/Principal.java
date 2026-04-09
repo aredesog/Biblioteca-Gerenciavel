@@ -2,7 +2,7 @@ package library.manager.principal;
 
 import library.manager.model.*;
 
-public class principal {
+public class Principal {
     public static void main(String[] args) {
 
         Biblioteca biblioteca = new Biblioteca();
