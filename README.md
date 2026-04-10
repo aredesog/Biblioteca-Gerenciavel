@@ -14,12 +14,20 @@ Consulta rápida de informações
 Esse tipo de sistema é amplamente utilizado para automatizar processos em bibliotecas e melhorar o controle de acervo .
 
 🚀 Funcionalidades
+
 📖 Cadastro de livros
+
 🔍 Busca de livros
+
 👤 Cadastro de usuários
+
 🔐 Controle de acesso (se aplicável)
+
 📦 Empréstimo de livros
+
 🔄 Devolução e renovação
+
 📊 Listagem de acervo
+
 
 Feito para colocar em prática meus conhecimentos de Java, POO, bibliotecas, Spring e PostgreSQL! (incompleto)
