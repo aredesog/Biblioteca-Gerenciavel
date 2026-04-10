@@ -13,6 +13,7 @@ Consulta rápida de informações
 
 Esse tipo de sistema é amplamente utilizado para automatizar processos em bibliotecas e melhorar o controle de acervo .
 
+
 🚀 Funcionalidades
 
 📖 Cadastro de livros
@@ -30,4 +31,5 @@ Esse tipo de sistema é amplamente utilizado para automatizar processos em bibli
 📊 Listagem de acervo
 
 
-Feito para colocar em prática meus conhecimentos de Java, POO, bibliotecas, Spring e PostgreSQL! (incompleto)
+
+## Feito para colocar em prática meus conhecimentos de Java, POO, bibliotecas, Spring e PostgreSQL! (incompleto)
