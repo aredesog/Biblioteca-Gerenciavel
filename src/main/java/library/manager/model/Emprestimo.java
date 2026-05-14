@@ -34,6 +34,16 @@ public class Emprestimo {
         return dataDevolucaoReal.isAfter(dataDevolucaoPrevista);
     }
 
+    public double calcularMulta() {
+        if (isAtrasado()) {
+            long diasAtraso = LocalDate.now().toEpochDay() - dataDevolucaoPrevista.toEpochDay();
+            return diasAtraso * 0.5; // Exemplo: R$0,50 por dia de atraso
+        }
+        else{
+            return 0;
+        }
+    }
+
     public Usuario getUsuario() {
         return usuario;
     }

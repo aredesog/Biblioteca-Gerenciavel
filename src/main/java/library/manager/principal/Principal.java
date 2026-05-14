@@ -2,13 +2,16 @@ package library.manager.principal;
 
 import library.manager.model.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Principal {
     public static void main(String[] args) {
 
         Biblioteca biblioteca = new Biblioteca();
 
         Usuario aluno1 = new Aluno("João Silva", "blabla","123", "123456" );
-        Livro Pequeno_Principe = new Livro("Antoine de Saint-Exupéry", "O Pequeno Príncipe", 123456, 1943);
+        Livro Pequeno_Principe = new Livro("Antoine de Saint-Exupéry", "O Pequeno Príncipe", "123456", 1943);
 
 //        Emprestimo emprestimoUm = new Emprestimo(aluno1, Pequeno_Principe);
 //
@@ -18,13 +21,19 @@ public class Principal {
 //        System.out.println("Livro está disponivel: " + Pequeno_Principe.isDisponivel());
 
         // cadastrando livros
-        Livro l1 = new Livro("Joshua Bloch", "Effective Java", 11, 2018);
-        Livro l2 = new Livro("Robert Martin", "Código Limpo", 12, 2008);
-        Livro l3 = new Livro("Joshua Bloch", "Java Puzzlers", 13, 2005);
+        Livro l1 = new Livro("Joshua Bloch", "Effective Java", "11", 2018);
+        Livro l2 = new Livro("Robert Martin", "Código Limpo", "12", 2008);
+        Livro l3 = new Livro("Joshua Bloch", "Java Puzzlers", "13", 2005);
 
         biblioteca.adicionarLivro(l1);
         biblioteca.adicionarLivro(l2);
         biblioteca.adicionarLivro(l3);
+
+    //pegar os livros cadastrados na biblioteca e adicionar na List de livros
+        List<Livro> livros = new ArrayList<>();
+        livros.add(l1.getTitulo());
+        livros.add(l2.getTitulo());
+        livros.add(l3.getTitulo());
 
         // cadastrando usuários
         Aluno aluno = new Aluno("Guilherme", "gui@email.com", "123.456.789-00", "MAT001");
@@ -35,7 +44,8 @@ public class Principal {
 
         // testando os streams
         System.out.println("=== Títulos disponíveis ===");
-        biblioteca.listarDisponiveis().forEach(livro -> System.out.println(livro.getTitulo()));
+        //biblioteca.listarDisponiveis().forEach(livro -> System.out.println(livro.getTitulo()));
+        livros.forEach(System.out::println);
 
 
     }

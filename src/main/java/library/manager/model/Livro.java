@@ -5,12 +5,12 @@ import library.manager.interfaces.Catalogavel;
 public class Livro implements Catalogavel {
     private String autor;
     private String titulo;
-    private int ISBN; //numeroq ue identifica o livro
+    private String ISBN; //numeroq ue identifica o livro
     private int anoPublicacao;
     private boolean disponivel;
 
 
-    public Livro(String autor, String titulo, int ISBN, int anoPublicacao) {
+    public Livro(String autor, String titulo, String ISBN, int anoPublicacao) {
         this.autor = autor;
         this.titulo = titulo;
         this.ISBN = ISBN;
@@ -26,7 +26,7 @@ public class Livro implements Catalogavel {
         this.autor = autor;
     }
 
-    public String getTitulo() {
+    public Livro getTitulo() {
         return titulo;
     }
 
@@ -34,11 +34,11 @@ public class Livro implements Catalogavel {
         this.titulo = titulo;
     }
 
-    public int getISBN() {
+    public String getISBN() {
         return ISBN;
     }
 
-    public void setISBN(int ISBN) {
+    public void setISBN(String ISBN) {
         this.ISBN = ISBN;
     }
 
@@ -56,6 +56,7 @@ public class Livro implements Catalogavel {
     }
 
     //Verifica disponibilidade
+    @Override //vem da catalogavel
     public boolean isDisponivel() {
         return disponivel;
     }

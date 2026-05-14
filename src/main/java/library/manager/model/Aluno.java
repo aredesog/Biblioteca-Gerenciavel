@@ -9,8 +9,14 @@ public class Aluno extends Usuario {
         this.matricula = matricula;
     }
 
+    public String getMatricula() {
+        return matricula;
+    }
+
     @Override //sobrescreve o método abstrato da classe Usuario
     public String getTipo() {
         return "Aluno";
     }
 }
+
+

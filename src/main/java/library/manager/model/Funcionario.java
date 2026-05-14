@@ -9,6 +9,10 @@ public class Funcionario extends Usuario {
         this.cargo = cargo;
     }
 
+    public String getCargo() {
+        return cargo;
+    }
+
     @Override
     public String getTipo() {
         return "Funcionario";
