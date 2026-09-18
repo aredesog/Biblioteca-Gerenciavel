@@ -1,21 +1,44 @@
 package library.manager.model;
 
-import library.manager.interfaces.Catalogavel;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
-public class Livro implements Catalogavel {
-    private String autor;
+@Entity
+public class Livro {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String titulo;
-    private String ISBN; //numeroq ue identifica o livro
-    private int anoPublicacao;
-    private boolean disponivel;
+    private String autor;
+    private boolean disponivel = true;
 
+    public Livro() {
+    }
 
-    public Livro(String autor, String titulo, String ISBN, int anoPublicacao) {
-        this.autor = autor;
+    public Livro(String titulo, String autor) {
         this.titulo = titulo;
-        this.ISBN = ISBN;
-        this.anoPublicacao = anoPublicacao;
-        this.disponivel = true; //Já comeca disponivel
+        this.autor = autor;
+        this.disponivel = true;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
     public String getAutor() {
@@ -26,38 +49,11 @@ public class Livro implements Catalogavel {
         this.autor = autor;
     }
 
-    public Livro getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getISBN() {
-        return ISBN;
-    }
-
-    public void setISBN(String ISBN) {
-        this.ISBN = ISBN;
-    }
-
-    public int getAnoPublicacao() {
-        return anoPublicacao;
-    }
-
-    public void setAnoPublicacao(int anoPublicacao) {
-        this.anoPublicacao = anoPublicacao;
-    }
-
-    //Coloca disponivel (metodo auxiliar)
-    public void setDisponivel(boolean disponivel) {
-        this.disponivel = disponivel;
-    }
-
-    //Verifica disponibilidade
-    @Override //vem da catalogavel
     public boolean isDisponivel() {
         return disponivel;
+    }
+
+    public void setDisponivel(boolean disponivel) {
+        this.disponivel = disponivel;
     }
 }

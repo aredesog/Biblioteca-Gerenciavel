@@ -1,55 +1,44 @@
 package library.manager.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+
 import java.time.LocalDate;
 
+@Entity
 public class Emprestimo {
 
-    private Usuario usuario;   // pode ser Aluno ou Funcionario
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
     private Livro livro;
+
+    @ManyToOne
+    private Usuario usuario;
+
     private LocalDate dataEmprestimo;
-    private LocalDate dataDevolucaoPrevista;
-    private LocalDate dataDevolucaoReal;
-    private boolean ativo;
+    private LocalDate dataDevolucao;
 
-    public Emprestimo(Usuario usuario, Livro livro) {
-        this.usuario = usuario;
+    public Emprestimo() {
+    }
+
+    public Emprestimo(Livro livro, Usuario usuario, LocalDate dataEmprestimo) {
         this.livro = livro;
-        this.dataEmprestimo = LocalDate.now();
-        this.dataDevolucaoPrevista = LocalDate.now().plusDays(14);
-        this.ativo = true;
-        livro.setDisponivel(false); // já marca o livro como indisponível
-    }
-
-    public void devolver() {
-        this.dataDevolucaoReal = LocalDate.now();
-        this.ativo = false;
-        livro.setDisponivel(true); // libera o livro
-    }
-
-    //Avisa do atraso
-    public boolean isAtrasado() {
-        if (ativo) {
-            return LocalDate.now().isAfter(dataDevolucaoPrevista);
-        }
-        return dataDevolucaoReal.isAfter(dataDevolucaoPrevista);
-    }
-
-    public double calcularMulta() {
-        if (isAtrasado()) {
-            long diasAtraso = LocalDate.now().toEpochDay() - dataDevolucaoPrevista.toEpochDay();
-            return diasAtraso * 0.5; // Exemplo: R$0,50 por dia de atraso
-        }
-        else{
-            return 0;
-        }
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+        this.dataEmprestimo = dataEmprestimo;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Livro getLivro() {
@@ -60,6 +49,14 @@ public class Emprestimo {
         this.livro = livro;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
     public LocalDate getDataEmprestimo() {
         return dataEmprestimo;
     }
@@ -68,27 +65,11 @@ public class Emprestimo {
         this.dataEmprestimo = dataEmprestimo;
     }
 
-    public LocalDate getDataDevolucaoPrevista() {
-        return dataDevolucaoPrevista;
+    public LocalDate getDataDevolucao() {
+        return dataDevolucao;
     }
 
-    public void setDataDevolucaoPrevista(LocalDate dataDevolucaoPrevista) {
-        this.dataDevolucaoPrevista = dataDevolucaoPrevista;
-    }
-
-    public LocalDate getDataDevolucaoReal() {
-        return dataDevolucaoReal;
-    }
-
-    public void setDataDevolucaoReal(LocalDate dataDevolucaoReal) {
-        this.dataDevolucaoReal = dataDevolucaoReal;
-    }
-
-    public boolean isAtivo() {
-        return ativo;
-    }
-
-    public void setAtivo(boolean ativo) {
-        this.ativo = ativo;
+    public void setDataDevolucao(LocalDate dataDevolucao) {
+        this.dataDevolucao = dataDevolucao;
     }
 }
